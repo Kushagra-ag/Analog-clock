@@ -1,0 +1,19 @@
+@charset "UTF-8";
+
+#myCanvas
+{
+
+	/*background-image: url("background.jpg");*/
+	position: fixed;
+	z-index: 99999;
+	left: 0;
+}
+
+#myCanvas_2
+{
+
+	position: fixed;
+	z-index: -1;
+	left: 0;
+	
+}
