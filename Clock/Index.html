@@ -22,19 +22,22 @@
 <canvas id="myCanvas_2" height="640" width="640" >
 	Canvas not supportred.
 </canvas>
+<canvas id="myCanvas_3" height="640" width="640" >
+	Canvas not supportred.
+</canvas>
 </center>
 <script>
 		var canvas = document.getElementById("myCanvas");
-		var canvas2 = document.getElementById("myCanvas_2");
+		var canvas3 = document.getElementById("myCanvas_3");
 		var ctx = canvas.getContext("2d");
-		var ctx2 = canvas2.getContext("2d");
+		var ctx3 = canvas3.getContext("2d");
 		var radius = canvas.width/3;
-		var num=1;
+		var num=1, temp = 50;
 
 		ctx.translate(canvas.width/2, canvas.height/2);
-		ctx2.translate(canvas.width/2, canvas.height/2); 
+		ctx3.translate(canvas.width/2, canvas.height/2); 
 		
-		setInterval(time,1000,ctx2,radius);
+		setInterval(time,1000,ctx3,radius);
 		drawclock(ctx, radius);
 		numbers(ctx, radius);
 		//time(ctx, radius);
@@ -69,8 +72,21 @@
 
 			ctx.beginPath();
 			ctx.arc(0,0,radius*0.1,0,2*Math.PI);
+			ctx.strokeStyle = "#000";
 			ctx.lineWidth = 1;
 			ctx.stroke();
+
+			ctx.rotate(5*Math.PI/6);
+			ctx.translate(0,-radius*0.735);
+			ctx.strokeStyle = "#000";
+			ctx.rotate(-5*Math.PI/6);
+			ctx.fillStyle = "#fff";
+			ctx.fillRect(0,0,44,22);
+			ctx.strokeRect(0,0,44,22);
+			ctx.rotate(5*Math.PI/6);
+			ctx.translate(0,radius*0.735);
+			ctx.rotate(-5*Math.PI/6);
+
 			
 		}
 
@@ -78,8 +94,8 @@
 		{
 			ctx.textAlign = "center";
 			ctx.textBaseline = "middle";
-			ctx.font = radius*0.35 + "px handlee";
-			//radius*= 0.8;
+			ctx.font = radius*0.40 + "px handlee";
+			ctx.fillStyle = "#000";
 
 			for(num=3; num<13; num+=3)
 			{
@@ -95,52 +111,79 @@
 			}
 		}
 
-		function time(ctx2, radius)
-		{
+		function time(ctx3, radius)
+		{	
+
 			var time = new Date();
 			var hours = time.getHours();
 			var min = time.getMinutes();
 			var sec = time.getSeconds();
+			var d = time.getDate(),supscript = 'th';
 
-			ctx2.fillStyle = "#fff"
-			ctx2.fillRect(-canvas.width/2,-canvas.width/2,canvas.width,canvas.width);
+			if(d==1)
+				supscript = 'st';
+			else if(d==2)
+				supscript = 'nd';
+			else if(d==3)
+				supscript = 'rd';
+
+			if(temp!=d)
+			{
+				ctx.textAlign = "start";
+				ctx.rotate(5*Math.PI/6);
+				ctx.translate(0, -radius*0.8);
+				ctx.rotate(-5*Math.PI/6);
+				ctx.font = radius*0.08 + "px handlee";
+				ctx.fillStyle = "#000";
+				ctx.fillText(d+supscript,0,0);
+				ctx.rotate(5*Math.PI/6);
+				ctx.translate(0, radius*0.8);
+				ctx.rotate(-5*Math.PI/6);
+				temp = d;
+			}
+
+
+			ctx3.fillStyle = "#fff"
+			ctx3.fillRect(-canvas.width/2,-canvas.width/2,canvas.width,canvas.width);
+			//document.getElementById('myCanvas_3').style.backgroundImage = "url('background.png')";
+			//document.getElementById('myCanvas_3').style.opacity = 0.5;
 
 			hours = hours % 12;
 			hours = (hours*Math.PI/6) + (min*Math.PI/360) + (sec*Math.PI/21600);
-			hands(ctx2, hours, radius*0.4, radius*0.06);
+			hands(ctx3, hours, radius*0.4, radius*0.06);
 
 			min = (min*Math.PI/30) + (sec*Math.PI/1800);
-			hands(ctx2, min, radius*0.7, radius*0.04);
+			hands(ctx3, min, radius*0.7, radius*0.04);
 
 			sec = (sec*Math.PI/30);
-			hands_sec(ctx2, sec, radius*0.8, radius*0.02);
+			hands_sec(ctx3, sec, radius*0.8, radius*0.02);
 
 		}
 
-		function hands(ctx2, pos, len, width)
+		function hands(ctx3, pos, len, width)
 		{
 			
-			ctx2.beginPath();
-			ctx2.lineWidth = width;
-			ctx2.strokeStyle = "#000";
-			ctx2.moveTo(0,0);
-			ctx2.rotate(pos);
-			ctx2.lineTo(0, -len);
-			ctx2.stroke();
-			ctx2.rotate(-pos);
+			ctx3.beginPath();
+			ctx3.lineWidth = width;
+			ctx3.strokeStyle = "#000";
+			ctx3.moveTo(0,0);
+			ctx3.rotate(pos);
+			ctx3.lineTo(0, -len);
+			ctx3.stroke();
+			ctx3.rotate(-pos);
 
 		}
 
-		function hands_sec(ctx2, pos, len, width)
+		function hands_sec(ctx3, pos, len, width)
 		{
-			ctx2.beginPath();
-			ctx2.lineWidth = width;
-			ctx2.strokeStyle = "#d00";
-			ctx2.moveTo(0,0);
-			ctx2.rotate(pos);
-			ctx2.lineTo(0, -len);
-			ctx2.stroke();
-			ctx2.rotate(-pos);
+			ctx3.beginPath();
+			ctx3.lineWidth = width;
+			ctx3.strokeStyle = "#d00";
+			ctx3.moveTo(0,0);
+			ctx3.rotate(pos);
+			ctx3.lineTo(0, -len);
+			ctx3.stroke();
+			ctx3.rotate(-pos);
 
 		}
 	</script>
