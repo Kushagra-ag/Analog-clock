@@ -40,7 +40,7 @@
 		setInterval(time,1000,ctx3,radius);
 		drawclock(ctx, radius);
 		numbers(ctx, radius);
-		//time(ctx, radius);
+		//document.getElementById('myCanvas').onmouseover = function(){alert('heyy');}
 
 		function drawclock(ctx, radius)
 		{
@@ -156,7 +156,7 @@
 			hands(ctx3, min, radius*0.7, radius*0.04);
 
 			sec = (sec*Math.PI/30);
-			hands_sec(ctx3, sec, radius*0.8, radius*0.02);
+			hands_sec(ctx3, sec, radius*0.8, radius*0.009);
 
 		}
 
@@ -179,11 +179,16 @@
 			ctx3.beginPath();
 			ctx3.lineWidth = width;
 			ctx3.strokeStyle = "#d00";
-			ctx3.moveTo(0,0);
 			ctx3.rotate(pos);
+			ctx3.moveTo(0,len/6);
 			ctx3.lineTo(0, -len);
 			ctx3.stroke();
 			ctx3.rotate(-pos);
+
+			ctx3.beginPath();
+			ctx3.arc(0,0,radius*0.02,0,2*Math.PI);
+			ctx3.fillStyle = "#d00";
+			ctx3.fill();			
 
 		}
 	</script>
