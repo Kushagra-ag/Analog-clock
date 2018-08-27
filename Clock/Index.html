@@ -5,7 +5,7 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="stylesheet" type="text/css" href="css.css">
-	<link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Handlee">
+	
 
 
 	<title>
@@ -15,23 +15,34 @@
 </head>
 
 <body>
-	<center>
+
+
+<audio id="tick">
+	<source src="clock-tick.mp3" type="audio/mpeg">
+</audio>
+
 <canvas id="myCanvas" height="640" width="640" >
 	Canvas not supportred.
 </canvas>
+
 <canvas id="myCanvas_2" height="640" width="640" >
 	Canvas not supportred.
 </canvas>
+
 <canvas id="myCanvas_3" height="640" width="640" >
 	Canvas not supportred.
 </canvas>
-</center>
+
+
+
 <script>
 		var canvas = document.getElementById("myCanvas");
 		var canvas3 = document.getElementById("myCanvas_3");
 		var ctx = canvas.getContext("2d");
 		var ctx3 = canvas3.getContext("2d");
 		var radius = canvas.width/3;
+		var audio = document.getElementById('tick');
+		audio.volume = 0.7;
 		var num=1, temp = 50;
 
 		ctx.translate(canvas.width/2, canvas.height/2);
@@ -72,22 +83,10 @@
 
 			ctx.beginPath();
 			ctx.arc(0,0,radius*0.1,0,2*Math.PI);
-			ctx.strokeStyle = "#000";
+			ctx.strokeStyle = "#000";				//the small circle at centre
 			ctx.lineWidth = 1;
 			ctx.stroke();
 
-			ctx.rotate(5*Math.PI/6);
-			ctx.translate(0,-radius*0.735);
-			ctx.strokeStyle = "#000";
-			ctx.rotate(-5*Math.PI/6);
-			ctx.fillStyle = "#fff";
-			ctx.fillRect(0,0,44,22);
-			ctx.strokeRect(0,0,44,22);
-			ctx.rotate(5*Math.PI/6);
-			ctx.translate(0,radius*0.735);
-			ctx.rotate(-5*Math.PI/6);
-
-			
 		}
 
 		function numbers(ctx, radius)
@@ -119,6 +118,9 @@
 			var min = time.getMinutes();
 			var sec = time.getSeconds();
 			var d = time.getDate(),supscript = 'th';
+			
+
+			audio.play();
 
 			if(d==1)
 				supscript = 'st';
@@ -129,10 +131,21 @@
 
 			if(temp!=d)
 			{
+				ctx.rotate(5*Math.PI/6);
+				ctx.translate(0,-radius*0.735);
+				ctx.strokeStyle = "#000";		//current date code
+				ctx.rotate(-5*Math.PI/6);
+				ctx.fillStyle = "#fff";
+				ctx.fillRect(0,0,44,22);
+				ctx.strokeRect(0,0,44,22);
+				ctx.rotate(5*Math.PI/6);
+				ctx.translate(0,radius*0.735);
+				ctx.rotate(-5*Math.PI/6);
+
 				ctx.textAlign = "start";
 				ctx.rotate(5*Math.PI/6);
 				ctx.translate(0, -radius*0.8);
-				ctx.rotate(-5*Math.PI/6);
+				ctx.rotate(-5*Math.PI/6);			//updating the date
 				ctx.font = radius*0.08 + "px handlee";
 				ctx.fillStyle = "#000";
 				ctx.fillText(d+supscript,0,0);
