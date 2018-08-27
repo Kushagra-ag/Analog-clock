@@ -1,12 +1,17 @@
 @charset "UTF-8";
 
+@font-face
+{
+	font-family: 'Handlee';
+	src: url('fonts/handlee-regular.ttf');
+}
+
 #myCanvas
 {
 
 	
 	position: fixed;
-	z-index: 99999;
-	left: 10%;
+	z-index: 50;
 }
 
 #myCanvas_2
@@ -14,8 +19,7 @@
 	background-image: url("background2.png");
 	background-size: contain;
 	position: fixed;
-	z-index: 1;
-	left: 10%;
+	z-index: 40;
 	opacity: 0.5;
 	
 }
@@ -23,7 +27,12 @@
 #myCanvas_3
 {
 	position: fixed;
-	z-index: -1;
-	left: 10%;
+	z-index: 30;
 	
+}
+
+#tick
+{
+	display: none;
+	z-index: -1;
 }
