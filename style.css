@@ -16,7 +16,7 @@
 
 #myCanvas_2
 {
-	background-image: url("background2.png");
+	background-image: url("images/background2.png");
 	background-size: contain;
 	position: fixed;
 	z-index: 40;
