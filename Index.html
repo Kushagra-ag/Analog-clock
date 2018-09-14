@@ -288,15 +288,15 @@
 			var sec_cur = date_cur.getSeconds();
 			var sec_final;
 
-			if(sec_cur == 59)
-				check = 0;
-
 			if(flag == 0 || sec_cur == 0 || check == 0)
 			{		
 				flag = 0;
 				check = 1;
 				sec_cur += 60;
 			}
+			
+			if(sec_cur == 59)
+				check = 0;
 
 			sec_final = (sec_cur - sec_ref + sec_delay) % 60;			
 
