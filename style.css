@@ -171,6 +171,7 @@ p.anim
 .pause_button
 {
 	display: none;
+	margin-left: 0;
 }
 
 .lap_button
