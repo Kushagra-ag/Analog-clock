@@ -258,7 +258,7 @@
 		var resume_ = document.querySelector('.resume_button');
 		var stop_ = document.querySelector('.stop_button');
 		var sec_delay, min_delay, hours_delay;
-		var count = 0,flag=1, flag2=1;
+		var count = 0,flag=1,flag2=1,check=1;
 		var min_t = 0, hours_t = 0;
 
 		function start(event)
@@ -287,19 +287,25 @@
 			var date_cur = new Date();
 			var sec_cur = date_cur.getSeconds();
 			var sec_final;
-			
-			if(sec_cur - sec_ref +sec_delay == 0)
+
+			if(sec_cur == 59)
+				check = 0;
+
+			if(flag == 0 || sec_cur == 0 || check == 0)
+			{		
+				flag = 0;
+				check = 1;
+				sec_cur += 60;
+			}
+
+			sec_final = (sec_cur - sec_ref + sec_delay) % 60;			
+
+			if(sec_final == 0)
 			{				
 				min_t = (++min_t)%60;
 
 				if(min_t == 0)
 					hours_t = (++hours_t)%12;
-			}
-
-			if(flag == 0 || sec_cur == 0)
-			{		
-				flag = 0;
-				sec_cur += 60;
 			}
 
 			//remove the previously appended zeroes
