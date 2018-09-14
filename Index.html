@@ -287,8 +287,6 @@
 			var date_cur = new Date();
 			var sec_cur = date_cur.getSeconds();
 			var sec_final;
-			console.log("current-"+sec_cur);
-
 			
 			if(sec_cur - sec_ref +sec_delay == 0)
 			{				
@@ -300,10 +298,8 @@
 
 			if(flag == 0 || sec_cur == 0)
 			{		
-				console.log("in the if block of flag");
 				flag = 0;
 				sec_cur += 60;
-				console.log("current+60 : "+sec_cur);
 			}
 
 			//remove the previously appended zeroes
