@@ -1,38 +1,237 @@
 @charset "UTF-8";
 
-@font-face
+
+/*@font-face
 {
 	font-family: 'Handlee';
 	src: url('fonts/handlee-regular.ttf');
+}*/
+
+body
+{
+	margin: 0 0;
 }
 
-#myCanvas
+main
 {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+}
 
-	
-	position: fixed;
+canvas
+{
+	width:90%;
+	height: auto;
+	max-width: 640px;
+	max-height: 640px;
+	left:0;
+}
+
+.myCanvas_0
+{
+	position: relative;
+	visibility: hidden;
+}
+
+.myCanvas
+{
+	position: absolute;
 	z-index: 50;
 }
 
-#myCanvas_2
+.myCanvas_2
 {
 	background-image: url("images/background2.png");
 	background-size: contain;
-	position: fixed;
+	position: absolute;
 	z-index: 40;
 	opacity: 0.5;
-	
 }
 
-#myCanvas_3
+.myCanvas_3
 {
-	position: fixed;
+	position: absolute;
 	z-index: 30;
-	
 }
 
-#tick
+#div_4
+{
+	background-image: url(bg.png);
+	background-size: contain;
+	background-repeat: no-repeat;
+	height: 640px;
+	width: 640px;
+	text-align: center;
+	font-family: handlee, arial, serif;
+	color: black;
+}
+
+#lap_div
+{
+	display: none;
+	position: absolute;
+	margin-left: 380px;
+	margin-top: 220px;
+	font-size: 23px;
+	text-align: left;
+}
+
+.lap_no
+{
+	display: none;
+	color: #555;
+}
+
+p.caption
+{
+	position: absolute;
+	font-size: 37px;
+	text-align: left;
+	color: #555;
+	letter-spacing: 1px;
+	margin-left: 100px;
+	margin-top: 130px;
+}
+
+.timer
+{
+	margin-top: 43.75%;
+	color: #555;
+	font-size: 40px;
+
+	transition: margin-left 1s, margin-top 1s, font-size 1s;
+}
+
+#lap_div > p
+{
+	color: #555;
+}
+
+/*aniamtion class for caption on pressing start*/
+p.anim 							
+{
+	margin-left: -210px;
+	margin-top: 250px;
+	font-size: 37px;
+}
+
+/*aniamtion class for pause button on pressing start*/
+.anim_pause						
+{
+	animation: pause_anim 1s 1;
+	-webkit-animation-fill-mode: forwards;
+	-moz-animation-fill-mode: forwards;
+}
+
+.anim_div
+{
+	animation: div_anim 1s 1;
+	-webkit-animation-fill-mode: forwards;
+	-moz-animation-fill-mode: forwards;
+}
+
+.anim_div_2
+{
+	animation: div_anim_2 0.6s 1;
+	-webkit-animation-fill-mode: forwards;
+	-moz-animation-fill-mode: forwards;
+}
+
+#div_4 > button
+{
+	background-color: rgba(255,255,255,0);
+	border: 1px solid #333;
+	border-radius: 5px;
+	font-size: 18px;
+	font-family: handlee, arial, serif;
+	color: #000;
+	min-width: 80px;
+	cursor: pointer;
+}
+
+#div_4 > button:hover
+{
+	background-color: rgba(255,255,255,0.4);
+}
+
+#div_4 > button:active
+{
+	font-size: 17px;
+	border-style: inset;
+	outline-width: 0;
+}
+
+.start_button
+{
+	display: inline-block;
+	font-size: 20px; !important
+}
+
+.pause_button
+{
+	display: none;
+}
+
+.lap_button
+{
+	display: none;
+}
+
+.stop_button
+{
+	display: none;
+	margin-left: -200px;
+}
+
+.reset_button
+{
+	display: none;
+	margin-left: -200px;
+}
+
+.resume_button
+{
+	display: none;
+	margin-left: -200px;
+}
+
+.tick
 {
 	display: none;
 	z-index: -1;
+}
+
+@keyframes pause_anim
+{
+	to
+	{ 
+		margin-left: -200px;
+    }
+}
+
+@keyframes div_anim
+{
+	from
+	{
+		opacity: 0;
+	}
+
+	to
+	{
+		opacity: 1;
+	}
+}
+
+@keyframes div_anim_2
+{
+	from
+	{
+		opacity: 1;
+	}
+
+	to
+	{
+		opacity: 0;
+	}
 }
