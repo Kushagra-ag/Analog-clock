@@ -84,7 +84,7 @@ var canvas = document.querySelector('.myCanvas');
 			var d = time.getDate(),supscript = 'th';
 			
 
-			//audio.play();
+			audio.play();
 
 			if(d==1)
 				supscript = 'st';
@@ -209,11 +209,9 @@ var canvas = document.querySelector('.myCanvas');
 			var date_cur = new Date();
 			var sec_cur = date_cur.getSeconds();
 			var sec_final;
-			console.log("current- "+sec_cur);
 
 			if(flag == 0 || sec_cur == 0 || check == 0)
 			{		
-				console.log("in the if block of flag");
 				flag = 0;
 				check = 1;
 				sec_cur += 60;
@@ -222,13 +220,10 @@ var canvas = document.querySelector('.myCanvas');
 			if(sec_cur == 59)
 				check = 0;
 
-			sec_final = (sec_cur - sec_ref + sec_delay) % 60;			
-			console.log("final- "+sec_final);
-
+			sec_final = (sec_cur - sec_ref + sec_delay) % 60;		
 			
 			if(sec_final == 0)
 			{				
-				console.log("in the if block of final=0");
 				min_t = (++min_t)%60;
 
 				if(min_t == 0)
