@@ -1,4 +1,10 @@
-var canvas = document.querySelector('.myCanvas');
+		function preloader()
+		{
+			document.getElementsByTagName('main')[0].classList.toggle = "main_";
+			document.getElementsByClassName('preload')[0].classList.toggle = "preload_2";
+		}
+
+		var canvas = document.querySelector('.myCanvas');
 		var canvas3 = document.querySelector('.myCanvas_3');
 		var ctx = canvas.getContext("2d");
 		var ctx3 = canvas3.getContext("2d");
@@ -84,7 +90,7 @@ var canvas = document.querySelector('.myCanvas');
 			var d = time.getDate(),supscript = 'th';
 			
 
-			audio.play();
+			//audio.play();
 
 			if(d==1)
 				supscript = 'st';
@@ -180,7 +186,7 @@ var canvas = document.querySelector('.myCanvas');
 		var resume_ = document.querySelector('.resume_button');
 		var stop_ = document.querySelector('.stop_button');
 		var sec_delay;
-		var count = 0,flag=1,flag2=1,check=1;
+		var count = 0,flag=1,check=1;
 		var min_t = 0, hours_t = 0;
 
 		function start(event)
@@ -188,12 +194,14 @@ var canvas = document.querySelector('.myCanvas');
 			var time_ref = new Date();
 			var sec_ref = time_ref.getSeconds();
 			
-			start_.style.display = "none";
+			start_.style.opacity = "0";
 
 			pause_.style.display = "inline-block";
+			
 			document.getElementsByClassName('lap_no')[0].style.display = "inline";
 
 			lap_.style.display = "inline-block";
+			
 			lap_div.style.display = "block";
 			lap_div.className = "anim_div";
 
@@ -220,7 +228,8 @@ var canvas = document.querySelector('.myCanvas');
 			if(sec_cur == 59)
 				check = 0;
 
-			sec_final = (sec_cur - sec_ref + sec_delay) % 60;		
+			sec_final = (sec_cur - sec_ref + sec_delay) % 60;			
+
 			
 			if(sec_final == 0)
 			{				
@@ -323,7 +332,7 @@ var canvas = document.querySelector('.myCanvas');
 		{
 			var i=0;
 			count=0, min_t=0,hours_t=0;
-			start_.style.display = "inline-block";
+			start_.style.opacity = "1";
 			
 			timer.classList.toggle('anim');
 			timer.innerHTML = "00 : 00 : 00";
@@ -331,6 +340,7 @@ var canvas = document.querySelector('.myCanvas');
 			pause_.classList.toggle('anim_pause');
 
 			reset_.style.display = "none";
+			
 			lap_.style.display = "none";
 			lap_.style.color = "#000";
 			lap_.style.borderColor = "#333";
