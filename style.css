@@ -1,10 +1,31 @@
 @charset "UTF-8";
 
 
-@font-face
+/*@font-face
 {
 	font-family: 'Handlee';
 	src: url('fonts/handlee-regular.ttf');
+}*/
+
+.preload
+{
+	display: none;
+	width: 100%;
+	height: 100vh;
+	line-height: 100vh;
+	position: fixed;
+	opacity: 1;
+	transition: opacity 0.7s 1;
+}
+
+.preload img
+{
+	vertical-align: middle;
+}
+
+.preload_2
+{
+	opacity: 0;
 }
 
 body
@@ -17,6 +38,12 @@ main
 	display: flex;
 	flex-direction: row;
 	flex-wrap: wrap;
+	transition: opacity 1.7s 1;
+}
+
+.main_
+{
+	opacity: 1;
 }
 
 canvas
@@ -55,9 +82,9 @@ canvas
 	z-index: 30;
 }
 
-#div_4
+.div_4
 {
-	background-image: url("images/bg.png");
+	background-image: url(bg.png);
 	background-size: contain;
 	background-repeat: no-repeat;
 	height: 640px;
@@ -138,8 +165,9 @@ p.anim
 	-moz-animation-fill-mode: forwards;
 }
 
-#div_4 > button
+.div_4 > button
 {
+	display: none;
 	background-color: rgba(255,255,255,0);
 	border: 1px solid #333;
 	border-radius: 5px;
@@ -148,52 +176,35 @@ p.anim
 	color: #000;
 	min-width: 80px;
 	cursor: pointer;
+	-webkit-tap-highlight-color: transparent;
 }
 
-#div_4 > button:hover
+.div_4 > button:hover
 {
 	background-color: rgba(255,255,255,0.4);
 }
 
-#div_4 > button:active
+.div_4 > button:active
 {
-	font-size: 17px;
+	font-size: 17px !important;
 	border-style: inset;
 	outline-width: 0;
 }
 
+#start
+{
+	font-size: 20px;
+}
+
 .start_button
 {
-	display: inline-block;
-	font-size: 20px; !important
+	display: inline-block !important;
+	position: absolute;
+	margin-left: -40px;
 }
 
-.pause_button
+.stop_button, .reset_button, .resume_button
 {
-	display: none;
-	margin-left: 0;
-}
-
-.lap_button
-{
-	display: none;
-}
-
-.stop_button
-{
-	display: none;
-	margin-left: -200px;
-}
-
-.reset_button
-{
-	display: none;
-	margin-left: -200px;
-}
-
-.resume_button
-{
-	display: none;
 	margin-left: -200px;
 }
 
