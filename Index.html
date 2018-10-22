@@ -6,8 +6,6 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="stylesheet" type="text/css" href="style.css">
 	<link rel="preload" href="fonts/handlee-regular.ttf" as="font">
-	
-
 
 	<title>
 		Clock
@@ -16,9 +14,13 @@
 </head>
 
 <body>
+	<div class="preload">
+		<center><img src="preloader.gif"></center>
+	</div>
 
 <main>
-	<audio class="tick">
+<div>
+	<audio class="tick" autoplay="autoplay">
 		<source src="clock-tick.mp3" type="audio/mpeg">
 	</audio>
 
@@ -37,12 +39,12 @@
 	<canvas class="myCanvas_3" height="640" width="640" >
 		Canvas not supportred.
 	</canvas>
-
-	<div id="div_4">
+</div>
+	<div class="div_4">
 		<div id="lap_div">
-			<p> <strong>Lap 1: &nbsp&nbsp</strong> <span class="lap_no"> </span> </p>
-			<p> <strong>Lap 2: &nbsp&nbsp</strong> <span class="lap_no"> </span></p>
-			<p> <strong>Lap 3: &nbsp&nbsp</strong> <span class="lap_no"> </span></p>
+			<p> <strong>Lap 1: &nbsp;&nbsp;</strong> <span class="lap_no"> </span> </p>
+			<p> <strong>Lap 2: &nbsp;&nbsp;</strong> <span class="lap_no"> </span></p>
+			<p> <strong>Lap 3: &nbsp;&nbsp;</strong> <span class="lap_no"> </span></p>
 			
 		</div>
 		<p class = "caption">
@@ -51,7 +53,7 @@
 		<p class="timer">
 			00 : 00 : 00
 		</p>
-		<button class="start_button" onclick="start(event)">
+		<button class="start_button" id="start" onclick="start(event)">
 			Start
 		</button>
 		<button class="resume_button" onclick="resume(event)">
@@ -75,6 +77,6 @@
 
 <script src="script.js">
 </script>
-	
+
 </body>
 </html>
