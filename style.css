@@ -83,7 +83,7 @@ canvas
 
 .div_4
 {
-	background-image: url(bg.png);
+	background-image: url("images/bg.png");
 	background-size: contain;
 	background-repeat: no-repeat;
 	height: 640px;
