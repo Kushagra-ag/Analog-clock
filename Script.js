@@ -92,7 +92,7 @@
 			let d = time.getDate(),supscript = 'th';
 			
 
-			//audio.play();
+			audio.play();
 
 			if(d==1)
 				supscript = 'st';
