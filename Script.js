@@ -1,3 +1,5 @@
+	window.onload
+	{
 		function preloader()
 		{
 			document.getElementsByTagName('main')[0].classList.toggle = "main_";
@@ -68,7 +70,7 @@
 
 			for(num=3; num<13; num+=3)
 			{
-				var deg = num*Math.PI/6;
+				let deg = num*Math.PI/6;
 
 				ctx.rotate(deg);
 				ctx.translate(0, -radius);
@@ -83,11 +85,11 @@
 		function time(ctx3, radius)
 		{	
 
-			var time = new Date();
-			var hours = time.getHours();
-			var min = time.getMinutes();
-			var sec = time.getSeconds();
-			var d = time.getDate(),supscript = 'th';
+			let time = new Date();
+			let hours = time.getHours();
+			let min = time.getMinutes();
+			let sec = time.getSeconds();
+			let d = time.getDate(),supscript = 'th';
 			
 
 			//audio.play();
@@ -109,8 +111,6 @@
 				ctx.fillRect(0,0,44,22);
 				ctx.strokeRect(0,0,44,22);
 				ctx.rotate(5*Math.PI/6);
-				//ctx.translate(0,radius*0.735);
-				//ctx.rotate(-5*Math.PI/6);
 
 				ctx.textAlign = "start";
 				//ctx.rotate(5*Math.PI/6);
@@ -214,12 +214,14 @@
 
 		function diff(sec_ref,sec_delay)
 		{
-			var date_cur = new Date();
-			var sec_cur = date_cur.getSeconds();
-			var sec_final;
+			let date_cur = new Date();
+			let sec_cur = date_cur.getSeconds();
+			let sec_final;
+			//console.log("current- "+sec_cur);
 
 			if(flag == 0 || sec_cur == 0 || check == 0)
 			{		
+				//console.log("in the if block of flag");
 				flag = 0;
 				check = 1;
 				sec_cur += 60;
@@ -229,10 +231,10 @@
 				check = 0;
 
 			sec_final = (sec_cur - sec_ref + sec_delay) % 60;			
-
 			
 			if(sec_final == 0)
 			{				
+				//console.log("in the if block of final=0");
 				min_t = (++min_t)%60;
 
 				if(min_t == 0)
@@ -261,9 +263,8 @@
 
 		function lap(event)
 		{
-			
-			var data = timer.innerHTML;
-			var p = document.getElementsByClassName('lap_no');
+			let data = timer.innerHTML;
+			let p = document.getElementsByClassName('lap_no');
 
 			if(count == 0)
 			{
@@ -330,7 +331,7 @@
 
 		function reset(event)
 		{
-			var i=0;
+			let i=0;
 			count=0, min_t=0,hours_t=0;
 			start_.style.opacity = "1";
 			
@@ -364,3 +365,4 @@
 			lap_.style.display = "none";
 			clearInterval(myTimer);
 		}
+}
