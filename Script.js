@@ -89,16 +89,16 @@
 			let hours = time.getHours();
 			let min = time.getMinutes();
 			let sec = time.getSeconds();
-			let d = time.getDate(),supscript = 'th';
+			let d = time.getDate(),supscript = 'th', temp=d;
 			
 
 			audio.play();
 
-			if(d==1)
+			if(d%10==1)
 				supscript = 'st';
-			else if(d==2)
+			else if(d%10==2)
 				supscript = 'nd';
-			else if(d==3)
+			else if(d%10==3)
 				supscript = 'rd';
 
 			if(temp!=d)
